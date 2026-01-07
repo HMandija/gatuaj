@@ -9,8 +9,10 @@ export default function Testimonials() {
         <div className="section__head">
           <div>
             <p className="eyebrow">Feedback</p>
-            <h2>Thone per ne</h2>
-            <p className="muted">Klientet qe kane provuar recetat dhe mealbox-et tona.</p>
+            <h2>Ã‡fare Thone per ne</h2>
+            <p className="muted">
+              Klientet qe kane provuar recetat dhe mealbox-et tona.
+            </p>
           </div>
         </div>
 
@@ -24,7 +26,7 @@ export default function Testimonials() {
                   <div className="muted">Klient</div>
                 </div>
               </div>
-              <p className="tcard__quote">“{first.text}”</p>
+              <p className="tcard__quote">{first.text}</p>
               <div className="tcard__actions">
                 <span className="pill pill--soft">Receta + Mealbox</span>
                 <span className="pill pill--soft">Gatuaj ne shtepi</span>

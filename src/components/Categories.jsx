@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
 import { categories } from "../data/categories.js";
+import { useUi } from "../context/UiContext.jsx";
 
 export default function Categories() {
+  const { tr } = useUi();
+
   return (
     <section className="section">
       <div className="container">
         <div className="section__head">
           <div>
-            <p className="eyebrow">Perzgjedhje</p>
-            <h2>Kategorite kryesore</h2>
-            <p className="muted">Zgjidh nje kategori dhe gjej ide per sot.</p>
+            <p className="eyebrow">{tr("Perzgjedhje", "Selection")}</p>
+            <h2>{tr("Kategorite kryesore", "Top categories")}</h2>
+            <p className="muted">{tr("Zgjidh nje kategori dhe gjej ide per sot.", "Pick a category and get ideas for today.")}</p>
           </div>
           <Link className="text-link" to="/menu">
-            Shiko menune
+            {tr("Shiko menune", "See menu")}
           </Link>
         </div>
 
@@ -26,7 +29,7 @@ export default function Categories() {
               <div className="card__body">
                 <p className="muted">{c.desc}</p>
                 <Link className="text-link" to="/menu">
-                  Shiko me shume
+                  {tr("Shiko me shume", "See more")}
                 </Link>
               </div>
             </article>

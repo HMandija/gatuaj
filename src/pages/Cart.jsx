@@ -1,10 +1,12 @@
 import { useCart } from "../context/CartContext.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
+import { useUi } from "../context/UiContext.jsx";
 
 export default function Cart() {
   const { items, total, remove, setQty, clear } = useCart();
   const nav = useNavigate();
+  const { tr } = useUi();
 
   return (
     <>
@@ -12,16 +14,16 @@ export default function Cart() {
       <section className="section">
       <div className="container">
         <div style={{ display: "flex", gap: ".8rem", alignItems: "center" }}>
-          <h2 style={{ margin: 0 }}>Shporta</h2>
+          <h2 style={{ margin: 0 }}>{tr("Shporta", "Cart")}</h2>
           <div style={{ flex: 1 }} />
           <Link className="btn btn--ghost" to="/menu">
-            Kthehu
+            {tr("Kthehu", "Back")}
           </Link>
         </div>
 
         {items.length === 0 ? (
           <div className="card" style={{ padding: "1rem", marginTop: "1rem" }}>
-            Shporta eshte bosh. <Link to="/menu">Shko te menu</Link>
+            {tr("Shporta eshte bosh.", "Cart is empty.")} <Link to="/menu">{tr("Shko te menu", "Go to menu")}</Link>
           </div>
         ) : (
           <div className="card" style={{ padding: "1rem", marginTop: "1rem" }}>
@@ -61,7 +63,7 @@ export default function Cart() {
 
                 <strong>{x.price * x.qty} LEK</strong>
                 <button className="btn btn--ghost" onClick={() => remove(x.id)}>
-                  Hiq
+                  {tr("Hiq", "Remove")}
                 </button>
               </div>
             ))}
@@ -75,17 +77,17 @@ export default function Cart() {
               }}
             >
               <button className="btn btn--ghost" onClick={clear}>
-                Pastro
+                {tr("Pastro", "Clear")}
               </button>
               <div
                 style={{ display: "flex", gap: ".8rem", alignItems: "center" }}
               >
-                <strong>Total: {total} LEK</strong>
+                <strong>{tr("Total", "Total")}: {total} LEK</strong>
                 <button
                   className="btn btn--primary"
                   onClick={() => nav("/checkout")}
                 >
-                  Checkout
+                  {tr("Checkout", "Checkout")}
                 </button>
               </div>
             </div>

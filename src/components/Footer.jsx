@@ -6,7 +6,7 @@ export default function Footer() {
           <div className="brand brand--footer">
             <img
               className="brand__logo"
-              src="public\logo.png-removebg-preview.png"
+              src="/logo.png-removebg-preview.png"
               alt="Gatuaj logo"
             />
           </div>

@@ -26,6 +26,7 @@ export async function createOrder({
     total,
     paymentMethod,
     status: "pending",
+    adminNote: "",
     createdAt: serverTimestamp(),
   });
 
@@ -70,4 +71,9 @@ export async function updateOrderStatus(orderId, status) {
 export async function deleteOrder(orderId) {
   const ref = doc(db, "orders", orderId);
   await deleteDoc(ref);
+}
+
+export async function updateOrderAdminNote(orderId, adminNote) {
+  const ref = doc(db, "orders", orderId);
+  await updateDoc(ref, { adminNote });
 }

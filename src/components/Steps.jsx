@@ -1,43 +1,53 @@
+import { useUi } from "../context/UiContext.jsx";
+
 export default function Steps() {
+  const { tr } = useUi();
+
   return (
     <section className="section">
       <div className="container two-col">
         <div className="image-card">
           <img
-            alt="Perime"
+            alt={tr("Perime", "Vegetables")}
             src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=1400&q=80"
           />
         </div>
 
         <div>
-          <p className="eyebrow">Procesi</p>
-          <h2>Perberes te fresket dhe receta me te mira</h2>
+          <p className="eyebrow">{tr("Procesi", "Process")}</p>
+          <h2>{tr("Perberes te fresket dhe receta me te mira", "Fresh ingredients and better recipes")}</h2>
           <div className="timeline">
             <div className="timeline__item">
               <div className="timeline__n">01</div>
               <div>
-                <strong>Zgjidh menune</strong>
-                <p className="muted">Zgjidh receten ose mealbox-in qe te pelqen.</p>
+                <strong>{tr("Zgjidh menune", "Choose your menu")}</strong>
+                <p className="muted">
+                  {tr("Zgjidh receten ose mealbox-in qe te pelqen.", "Pick the recipe or mealbox you like.")}
+                </p>
               </div>
             </div>
             <div className="timeline__item">
               <div className="timeline__n">02</div>
               <div>
-                <strong>Porosit</strong>
-                <p className="muted">Vendos porosine (simulim) dhe mbaj shenime per adresen.</p>
+                <strong>{tr("Porosit", "Order")}</strong>
+                <p className="muted">
+                  {tr("Vendos porosine (simulim) dhe mbaj shenime per adresen.", "Place the order (demo) and note your address.")}
+                </p>
               </div>
             </div>
             <div className="timeline__item">
               <div className="timeline__n">03</div>
               <div>
-                <strong>Shijo</strong>
-                <p className="muted">Merr perberes te fresket dhe udhezime te sakta, pa stres.</p>
+                <strong>{tr("Shijo", "Enjoy")}</strong>
+                <p className="muted">
+                  {tr("Merr perberes te fresket dhe udhezime te sakta, pa stres.", "Get fresh ingredients and clear steps, stress free.")}
+                </p>
               </div>
             </div>
           </div>
 
           <a className="text-link" href="/menu">
-            Porosit tani
+            {tr("Porosit tani", "Order now")}
           </a>
         </div>
       </div>

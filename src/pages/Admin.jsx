@@ -5,6 +5,7 @@ import {
   getAllOrders,
   updateOrderStatus,
   deleteOrder,
+  updateOrderAdminNote,
 } from "../services/orderService.js";
 
 function formatDate(ts) {
@@ -30,6 +31,7 @@ export default function Admin() {
   const [error, setError] = useState("");
   const [savingId, setSavingId] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+  const [notesDraft, setNotesDraft] = useState({});
 
   const loadOrders = async () => {
     try {
@@ -59,6 +61,22 @@ export default function Admin() {
     } catch (err) {
       console.error(err);
       alert("Nuk u ndryshua statusi.");
+    } finally {
+      setSavingId("");
+    }
+  };
+
+  const handleNoteSave = async (id) => {
+    const note = notesDraft[id] ?? "";
+    try {
+      setSavingId(id);
+      await updateOrderAdminNote(id, note);
+      setOrders((prev) =>
+        prev.map((o) => (o.id === id ? { ...o, adminNote: note } : o))
+      );
+    } catch (err) {
+      console.error(err);
+      alert("Nuk u ruajt komenti i adminit.");
     } finally {
       setSavingId("");
     }
@@ -243,20 +261,50 @@ export default function Admin() {
                   <p className="muted">Totali</p>
                   <strong>{o.total} LEK</strong>
                 </div>
-                <div>
-                  <p className="muted">Notes</p>
-                  <div>{o.customer?.notes || "-"}</div>
+                  <div>
+                    <p className="muted">Notes</p>
+                    <div>{o.customer?.notes || "-"}</div>
+                  </div>
+                  <div>
+                    <p className="muted">Pagesa</p>
+                    <strong>
+                      {o.paymentMethod === "card" ? "Karte" : "Ne dorezim"}
+                    </strong>
+                  </div>
+                  <div className="order-note">
+                    <p className="muted">Komenti i adminit</p>
+                    <textarea
+                      className="inp"
+                      rows="3"
+                      placeholder="Shkruaj komentin per kete porosi..."
+                      value={notesDraft[o.id] ?? o.adminNote ?? ""}
+                      onChange={(e) =>
+                        setNotesDraft((prev) => ({
+                          ...prev,
+                          [o.id]: e.target.value,
+                        }))
+                      }
+                    />
+                    <div style={{ display: "flex", gap: ".6rem", marginTop: ".4rem" }}>
+                      <button
+                        className="btn btn--primary"
+                        disabled={savingId === o.id}
+                        onClick={() => handleNoteSave(o.id)}
+                        type="button"
+                      >
+                        Ruaj komentin
+                      </button>
+                      {o.adminNote && (
+                        <span className="muted">
+                          Aktual: <em>{o.adminNote}</em>
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="muted">Pagesa</p>
-                  <strong>
-                    {o.paymentMethod === "card" ? "Karte" : "Ne dorezim"}
-                  </strong>
-                </div>
-              </div>
 
-              <div
-                style={{
+                <div
+                  style={{
                   display: "flex",
                   gap: ".6rem",
                   flexWrap: "wrap",

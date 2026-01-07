@@ -12,13 +12,13 @@ export const products = [
     name: "Mealbox Fit",
     price: 1500,
     desc: "Me shume proteina, plan i lehte per performance.",
-    image: "/public/mealbox-fit.jpeg",
+    image: "/mealbox-fit.jpeg",
   },
   {
     id: "mb-3",
     name: "Mealbox Family",
     price: 2500,
-    desc: "Per 3-4 persona. Menu javore + perberes.",
+    desc: "Menu javore + perberes.",
     image:
       "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
   },

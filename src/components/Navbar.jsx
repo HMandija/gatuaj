@@ -3,10 +3,12 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useCart } from "../context/CartContext.jsx";
 import { useAuth } from "../hooks/useAuth.js";
+import { useUi } from "../context/UiContext.jsx";
 
 export default function Navbar() {
   const { count } = useCart();
   const { user } = useAuth();
+  const { tr, lang, setLang, toggleTheme, theme } = useUi();
 
   return (
     <header className="nav">
@@ -17,41 +19,64 @@ export default function Navbar() {
 
         <nav className="nav__links">
           <NavLink to="/" end>
-            Home
+            {tr("Home", "Home")}
           </NavLink>
-          <a href="#rreth">Rreth</a>
-          <a href="#receta">Receta</a>
-          <Link to="/menu">Menu</Link>
-          {user && <Link to="/orders">Porosite</Link>}
-          {user && <Link to="/account">Llogaria</Link>}
-          <Link to="/cart">Shporta ({count})</Link>
+          <a href="/#rreth">{tr("Rreth nesh", "About")}</a>
+          <a href="/#receta">{tr("Receta", "Recipes")}</a>
+          <Link to="/menu">{tr("Menu", "Menu")}</Link>
+          {user && <Link to="/orders">{tr("Porosite", "Orders")}</Link>}
+          {user && <Link to="/account">{tr("Llogaria", "Account")}</Link>}
+          <Link to="/cart">
+            {tr("Shporta", "Cart")} ({count})
+          </Link>
         </nav>
 
         <div className="nav__cta">
           {!user ? (
             <>
-              <span className="muted nav__hint">Mos e humbisni</span>
-              <Link className="btn btn--ghost" to="/login">
-                Login
+              <span className="muted nav__hint">
+                {tr("Mos e humbisni", "Don't miss out")}
+              </span>
+              <Link className="btn btn--light" to="/login">
+                {tr("Login", "Login")}
               </Link>
               <Link className="btn btn--primary" to="/register">
-                Regjistrohu
+                {tr("Regjistrohu", "Register")}
               </Link>
             </>
           ) : (
             <>
               <Link className="btn btn--ghost" to="/orders">
-                Porosite
+                {tr("Porosite", "Orders")}
               </Link>
               <button
                 className="btn btn--primary"
                 onClick={() => signOut(auth)}
                 type="button"
               >
-                Dil
+                {tr("Dil", "Logout")}
               </button>
             </>
           )}
+          <div className="nav__toggles">
+            <button
+              className={`btn btn--ghost ${lang === "AL" ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setLang("AL")}
+            >
+              AL
+            </button>
+            <button
+              className={`btn btn--ghost ${lang === "EN" ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setLang("EN")}
+            >
+              EN
+            </button>
+            <button className="btn btn--ghost" type="button" onClick={toggleTheme}>
+              {theme === "dark" ? tr("Light", "Light") : tr("Dark", "Dark")}
+            </button>
+          </div>
         </div>
       </div>
     </header>
