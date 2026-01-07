@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Tirana",
+			"country": {
+				"code": "AL",
+				"name": "Albania"
+			},
+			"subdivision": {
+				"code": "11",
+				"name": "Tirana"
+			},
+			"timezone": "Europe/Tirane",
+			"latitude": 41.3253,
+			"longitude": 19.8184
+		},
+		"timestamp": 1767739371767
+	}
+}
