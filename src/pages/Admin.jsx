@@ -318,18 +318,25 @@ export default function Admin() {
                 >
                   Marko si delivered
                 </button>
-                <button
-                  className="btn btn--ghost"
-                  disabled={savingId === o.id}
-                  onClick={() => handleStatus(o.id, "pending")}
-                >
-                  Ktheje pending
-                </button>
-                <button
-                  className="btn btn--ghost"
-                  disabled={savingId === o.id}
-                  onClick={() => handleDelete(o.id)}
-                >
+              <button
+                className="btn btn--ghost"
+                disabled={savingId === o.id}
+                onClick={() => handleStatus(o.id, "pending")}
+              >
+                Ktheje pending
+              </button>
+              <button
+                className="btn btn--ghost"
+                disabled={savingId === o.id}
+                onClick={() => handleStatus(o.id, "denied")}
+              >
+                Refuzo (denied)
+              </button>
+              <button
+                className="btn btn--ghost"
+                disabled={savingId === o.id}
+                onClick={() => handleDelete(o.id)}
+              >
                   Fshi
                 </button>
               </div>
