@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">gatuaj</string>
+    <string name="title_activity_main">gatuaj</string>
+    <string name="package_name">com.gatuaj.app</string>
+    <string name="custom_url_scheme">com.gatuaj.app</string>
+</resources>
