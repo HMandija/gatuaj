@@ -9,7 +9,7 @@ export default function Steps() {
         <div className="image-card">
           <img
             alt={tr("Perberes te fresket", "Fresh ingredients")}
-            src="public\fresh.ingredients.jpg"
+            src="/fresh.ingredients.jpeg"
           />
         </div>
 
