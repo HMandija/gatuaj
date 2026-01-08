@@ -8,8 +8,8 @@ export default function Steps() {
       <div className="container two-col">
         <div className="image-card">
           <img
-            alt={tr("Perime", "Vegetables")}
-            src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=1400&q=80"
+            alt={tr("Perberes te fresket", "Fresh ingredients")}
+            src="/fresh%20ingredients.jpg"
           />
         </div>
 
