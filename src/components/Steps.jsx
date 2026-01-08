@@ -9,20 +9,28 @@ export default function Steps() {
         <div className="image-card">
           <img
             alt={tr("Perberes te fresket", "Fresh ingredients")}
-            src="/fresh%20ingredients.jpg"
+            src="public\fresh.ingredients.jpg"
           />
         </div>
 
         <div>
           <p className="eyebrow">{tr("Procesi", "Process")}</p>
-          <h2>{tr("Perberes te fresket dhe receta me te mira", "Fresh ingredients and better recipes")}</h2>
+          <h2>
+            {tr(
+              "Perberes te fresket dhe receta me te mira",
+              "Fresh ingredients and better recipes"
+            )}
+          </h2>
           <div className="timeline">
             <div className="timeline__item">
               <div className="timeline__n">01</div>
               <div>
                 <strong>{tr("Zgjidh menune", "Choose your menu")}</strong>
                 <p className="muted">
-                  {tr("Zgjidh receten ose mealbox-in qe te pelqen.", "Pick the recipe or mealbox you like.")}
+                  {tr(
+                    "Zgjidh receten ose mealbox-in qe te pelqen.",
+                    "Pick the recipe or mealbox you like."
+                  )}
                 </p>
               </div>
             </div>
@@ -31,7 +39,10 @@ export default function Steps() {
               <div>
                 <strong>{tr("Porosit", "Order")}</strong>
                 <p className="muted">
-                  {tr("Vendos porosine (simulim) dhe mbaj shenime per adresen.", "Place the order (demo) and note your address.")}
+                  {tr(
+                    "Vendos porosine (simulim) dhe mbaj shenime per adresen.",
+                    "Place the order (demo) and note your address."
+                  )}
                 </p>
               </div>
             </div>
@@ -40,7 +51,10 @@ export default function Steps() {
               <div>
                 <strong>{tr("Shijo", "Enjoy")}</strong>
                 <p className="muted">
-                  {tr("Merr perberes te fresket dhe udhezime te sakta, pa stres.", "Get fresh ingredients and clear steps, stress free.")}
+                  {tr(
+                    "Merr perberes te fresket dhe udhezime te sakta, pa stres.",
+                    "Get fresh ingredients and clear steps, stress free."
+                  )}
                 </p>
               </div>
             </div>
